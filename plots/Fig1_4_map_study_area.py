@@ -72,6 +72,20 @@ def create_map(fig = None, sp_x = 1, sp_y = 1, sp_n = 1,
                                                 lw=1,
                                                 zorder = -50)
         ax.add_feature(shape_feature)
+        
+    # add contours of the German federal states
+    gdf = gpd.read_file("N:/data/bbox/NUTS_GER_Bundeslaender.geojson")
+    
+    for geom in gdf["geometry"]:
+        shape_feature = cfeature.ShapelyFeature([geom], 
+                                                ccrs.PlateCarree(), 
+                                                facecolor="None", 
+                                                alpha = 0.5,
+                                                edgecolor='black', 
+                                                lw=0.5,
+                                                zorder = -25)
+    
+        ax.add_feature(shape_feature)        
     
     # add grid lines
     gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,
@@ -205,6 +219,47 @@ if __name__ == "__main__":
                                        size = "3%", 
                                        pad = 0.1)
    
+    # add labels to the plot
+    ax.text(740196, 5980341, 'Mecklenburg-Western Pommerania', 
+            fontsize = 10,
+            fontweight = "bold",
+            horizontalalignment='center',
+            )
+    
+    ax.text(609000,6002536, 'Schleswig-\nHolstein', 
+            fontsize = 10,
+            fontweight = "bold",
+            horizontalalignment='center',
+            )
+    
+    ax.text(834343,5983000, 'Usedom', 
+            fontsize = 10,
+            horizontalalignment='center',
+            )    
+    
+    ax.text(568000,6073818, 'Flensburg Fjord', 
+            fontsize = 10,
+            horizontalalignment='center',
+            )
+    
+    ax.text(646551,5994479, 'Bay of Lübeck', 
+            fontsize = 10,
+            horizontalalignment='center',
+            )
+    
+    ax.text(787285,6035083, 'Rügen', 
+            fontsize = 10,
+            horizontalalignment='center',
+            )
+    
+    ax.text(801719,6013500, 'Greifswald\nBodden', 
+            fontsize = 10,
+            horizontalalignment='center',
+            )                 
+   
+    # Gelting bay
+    # Eckernförde Bay
+    
     # add inset with map of Germany
     axins = inset_axes(ax, width="55%", height="52%", loc="lower left", 
                    bbox_to_anchor=(-0.18,-0.0,1,1), 
@@ -229,7 +284,21 @@ if __name__ == "__main__":
                                                 zorder = -50)
     
         axins.add_feature(shape_feature)
+        
+    # add contours of the German federal states
+    gdf = gpd.read_file("N:/data/bbox/NUTS_GER_Bundeslaender.geojson")
     
+    for geom in gdf["geometry"]:
+        shape_feature = cfeature.ShapelyFeature([geom], 
+                                                ccrs.PlateCarree(), 
+                                                facecolor="None", 
+                                                alpha = 0.5,
+                                                edgecolor='black', 
+                                                lw=0.5,
+                                                zorder = -25)
+    
+        axins.add_feature(shape_feature)             
+        
     axins.set_extent([5.5,15.5,47.2,56],
                   ccrs.PlateCarree()) #For GER centered Minimap
     
@@ -249,7 +318,7 @@ if __name__ == "__main__":
     
     #%% plot climatologies of the output of GETM
     
-    xds_fpath = "N:/data/GETM/"   
+    xds_fpath = "N:/data/GETM/"
     
     sst = xr.open_dataset(xds_fpath+"mean_sst_jja.nc").rio.write_crs(
                         ccrs.UTM(zone = 32), inplace=True)["temp"]
@@ -368,9 +437,7 @@ if __name__ == "__main__":
     
     add_subplot_char(ax, "b")
     
-    
     plt.subplots_adjust(hspace = 0.01)
-    
     
     plt.savefig("N:/plots/GETM_sal_sst_mean.jpeg",
                 dpi = 300,

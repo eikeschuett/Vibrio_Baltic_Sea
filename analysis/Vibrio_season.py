@@ -10,8 +10,10 @@ import xarray as xr
 import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
 from dask.diagnostics import ProgressBar
-from map_study_area import (create_map, add_aligned_colorbar, remove_Schlei, 
-                            add_subplot_char)
+import sys
+sys.path.append("your/path/to/the/repository/plots")
+from Fig1_4_map_study_area import (create_map, add_aligned_colorbar, 
+                                   remove_Schlei, add_subplot_char)
 from cmocean import cm
 from cmocean.tools import crop_by_percent
 import os
@@ -213,13 +215,16 @@ if __name__ == "__main__":
     day_count = xds_result.day_count
     slope = xds_result.slope 
     p = xds_result.p
+    
+    extent = [525000, 850000, 5963000, 6091000]
+    
     fig = plt.figure(figsize=(8,3.25))
     
     fig, ax = create_map(fig = fig,
                           sp_x = 2, 
                           sp_y = 2, 
                           sp_n = 1,
-                          extent = [525000, 850000, 5940000, 6086000],
+                          extent = extent,
                           bottom_labels = False,
                           gridticksize = 8)
     add_subplot_char(ax, "a", loc = "lower left")
@@ -243,6 +248,7 @@ if __name__ == "__main__":
                           sp_x = 2, 
                           sp_y = 2, 
                           sp_n = 2,
+                          extent = extent,
                           bottom_labels = False,
                           left_labels = False,
                           gridticksize = 8)
@@ -268,6 +274,7 @@ if __name__ == "__main__":
                           sp_x = 2, 
                           sp_y = 2, 
                           sp_n = 3,
+                          extent = extent,
                           gridticksize = 8)
     add_subplot_char(ax, "c", loc = "lower left")
     ax.ylabel_style = {'size': 8}
@@ -288,6 +295,7 @@ if __name__ == "__main__":
                           sp_x = 2, 
                           sp_y = 2, 
                           sp_n = 4,
+                          extent = extent,
                           left_labels = False,
                           gridticksize = 8)
     
@@ -309,7 +317,7 @@ if __name__ == "__main__":
                                         ticks = [0, 0.05, 0.1, 0.2])
     cbar.set_label(label = "p [-]",size = 8)
     
-    fig.subplots_adjust(wspace = 0.3, hspace = -0.05)
+    fig.subplots_adjust(wspace = 0.3, hspace = -0.15)
     
     fig.savefig("N:/plots/mann_kendall_sst_17.6_w_lag.jpeg",
                 dpi = 300,
