@@ -320,7 +320,7 @@ if __name__ == "__main__":
     fig.subplots_adjust(wspace = 0.3, hspace = -0.15)
     
     fig.savefig("N:/plots/mann_kendall_sst_17.6_w_lag.jpeg",
-                dpi = 300,
+                dpi = 1200,
                 bbox_inches = "tight")
     
     plt.show()

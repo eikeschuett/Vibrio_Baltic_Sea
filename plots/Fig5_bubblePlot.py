@@ -51,7 +51,7 @@ lalt = ['Quantity', '0.1','1','10','100','10000','100000']
 h1,l1 = g.get_legend_handles_labels()
 
 
-month_l = ["Apr","Mar","Jun","Jul","Aug","Sep","Oct"]
+month_l = ["Apr","May","Jun","Jul","Aug","Sep","Oct"]
 
 h2 = np.append(np.append(np.append(h1[0], np.append(h1[0],h[6:12])),
                          h1[0]), h[12:19])
@@ -67,7 +67,7 @@ legend = g.legend(h2,l2,
                   ncol = 2, 
                   prop={'size': 8})
 
-plt.savefig("N:/plots/bubble_SST_Sal.jpeg", 
+plt.savefig("N:/plots/bubble_SST_Sal.pdf", 
             bbox_inches = "tight",
             dpi = 300)
 

@@ -310,8 +310,8 @@ if __name__ == "__main__":
     axins.add_geometries([geom], ccrs.PlateCarree(), facecolor='none',
                               edgecolor='tab:red', linewidth=2)
     
-    plt.savefig("N:/plots/map_vibrio_samples.jpeg",
-                dpi = 300,
+    plt.savefig("N:/plots/map_vibrio_samples.pdf",
+                dpi = 600,
                 bbox_inches = "tight")
     
     plt.show()
@@ -440,7 +440,7 @@ if __name__ == "__main__":
     plt.subplots_adjust(hspace = 0.01)
     
     plt.savefig("N:/plots/GETM_sal_sst_mean.jpeg",
-                dpi = 300,
+                dpi = 1200,
                 bbox_inches = "tight")
     
     plt.show()

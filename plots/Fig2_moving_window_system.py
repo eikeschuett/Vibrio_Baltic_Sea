@@ -116,7 +116,7 @@ with xr.open_dataset("N:/data/GETM/WB200m.suf.2008-2021.nc") as ds:
     ax1.set_xticks(xticks)
     ax1.set_xticklabels(["t-3", "t-2", "t-1", "t-0"], rotation = "horizontal")
     
-    plt.savefig("N:/plots/variable_moving_window.jpeg",
+    plt.savefig("N:/plots/variable_moving_window.pdf",
                 dpi = 300,
                 bbox_inches = "tight")
     

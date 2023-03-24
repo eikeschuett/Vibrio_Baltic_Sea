@@ -22,7 +22,7 @@ if __name__ == "__main__":
     s.stNicholasAlg(alpha = 0.1, # correlation coefficient cut off;default: 0.1
                     bt = True, # Bootstrap
                     n = 100, #  number of bootstrap iterations; default: 100
-                    lbd = 0.08, #  fraction of all iterations to accept an edge
+                    lbd = 0.08, # fraction of all iterations to accept an edge
                                 # as a prediction; default: 0.5 (e.g. 50/100 
                                 # iterations an edge need to be found, to be 
                                 # considered as a predicted edge at lbd=0.5 
@@ -153,7 +153,7 @@ if __name__ == "__main__":
     # insert the colorbar
     _insertCbar(ax, cmap, label = "$r_s$", orientation = "horizontal")
     
-    plt.savefig("N:/plots/snha_bootstrap_100_it.jpeg",
+    plt.savefig("N:/plots/snha_bootstrap_100_it.pdf",
                 dpi = 300,
                 bbox_inches = "tight")
     

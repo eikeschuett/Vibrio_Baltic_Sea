@@ -231,7 +231,7 @@ sss.plot(ax = ax2,
 ax2.set_title("SSS [PSU]")
 
 
-plt.savefig("N:/plots/GETM-Boknis_Eck_Arkona_SST_SSS.jpeg",
+plt.savefig("N:/plots/GETM-Boknis_Eck_Arkona_SST_SSS.pdf",
             bbox_inches = "tight",
             dpi = 300)
 
