@@ -289,7 +289,7 @@ class match_up(object):
                 ax.set_xlim([0, max_lim])
                 
                 if plot_stats:
-                    ax.text(0.05, 0.82, 'r: {:.2f}\n'
+                    ax.text(0.05, 0.82, '$r$: {:.2f}\n'
                                         #'RMSE: {:.2f}\n'
                                         'MAE: {:.2f}\n'
                                         'bias: {:.2f}\n'
@@ -297,7 +297,8 @@ class match_up(object):
                                                        #self.rmse[k],
                                                        self.mae[k],
                                                        self.bias[k],
-                                                       self.n[k]), 
+                                                       self.n[k]).replace("-", 
+                                                                  u"\u2212"), 
                             horizontalalignment='left',
                             verticalalignment='center', 
                             transform=ax.transAxes)

@@ -57,7 +57,8 @@ with xr.open_dataset("N:/data/GETM/WB200m.suf.2008-2021.nc") as ds:
         ax1.add_patch(rect)
         ax1.text(date_start-pd.Timedelta(days = td_int-0.5), 
                  avg-avg_offset, 
-                 r"$\overline{SST}_{t-" + str(i+1) + ",t-0}$",
+                 r"$\overline{SST}_{t" + u"\mathrm{\u2212}" + str(i+1) + ",t" + 
+                 u"\mathrm{\u2212}" + "0}$",
                  bbox = bbox)
         
     date_end = pd.to_datetime("2018-07-25")
@@ -78,7 +79,8 @@ with xr.open_dataset("N:/data/GETM/WB200m.suf.2008-2021.nc") as ds:
         ax1.add_patch(rect)
         ax1.text(date_start-pd.Timedelta(days = td_int-0.5), 
                  avg-avg_offset, 
-                 r"$\overline{SST}_{t-" + str(i+2) + ",t-1}$",
+                 r"$\overline{SST}_{t" + u"\mathrm{\u2212}" + str(i+2) + ",t" + 
+                 u"\mathrm{\u2212}" +"1}$",
                  # bbox = bbox,
                  )
         
@@ -99,7 +101,8 @@ with xr.open_dataset("N:/data/GETM/WB200m.suf.2008-2021.nc") as ds:
         ax1.add_patch(rect)  
         ax1.text(date_start-pd.Timedelta(days = td_int-0.5), 
                  avg-avg_offset, 
-                 r"$\overline{SST}_{t-" + str(i+3) + ",t-2}$",
+                 r"$\overline{SST}_{t" + u"\mathrm{\u2212}" + str(i+3) + ",t" + 
+                 u"\mathrm{\u2212}" + "2}$",
                  bbox = bbox)
     
     ax1.axvline(x=date, c = "Gray")
@@ -114,7 +117,9 @@ with xr.open_dataset("N:/data/GETM/WB200m.suf.2008-2021.nc") as ds:
     ax1.set_title("")
     
     ax1.set_xticks(xticks)
-    ax1.set_xticklabels(["t-3", "t-2", "t-1", "t-0"], rotation = "horizontal")
+    ax1.set_xticklabels([u"t\u22123", u"t\u22122", u"t\u22121", u"t\u22120"], 
+                        rotation = "horizontal",
+                        ha = "center")
     
     plt.savefig("N:/plots/variable_moving_window.pdf",
                 dpi = 300,

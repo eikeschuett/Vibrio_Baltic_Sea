@@ -58,7 +58,7 @@ df = df[order]
 rho = df.corr(method = "spearman")
 pval = df.corr(method=lambda x, y: spearmanr(x, y)[1]) - np.eye(*rho.shape)
 p = pval.applymap(lambda x: ''.join(['*' for t in [.05, .01, .001] if x<=t]))
-dat = rho.round(2).astype(str) + p         
+dat = rho.round(2).astype(str) + p
 
 # Generate a mask for the upper triangle
 mask = np.triu(np.ones_like(rho, dtype=bool))
@@ -73,7 +73,7 @@ cmap = sns.color_palette("vlag", as_cmap=True)
 p = sns.heatmap(rho,
                 mask=mask,
                 cmap=cmap,
-                annot=dat,
+                annot=dat.replace("-", u"\u2212", regex=True),
                 # annot_kws={"fontsize":8},
                 square = False, 
                 linewidths=.5 ,
@@ -84,6 +84,7 @@ p = sns.heatmap(rho,
                           "use_gridspec": False,
                           "location":"top"},
                 fmt='')
+
 
 cbar = ax.collections[0].colorbar
 # increase label size
@@ -103,6 +104,6 @@ ax.set_ylim([24, 0])
 plt.xticks(rotation=0)
 
 
-plt.savefig("N:/plots/corr_matrices/All_vars_Corr.pdf",
+plt.savefig("N:/plots/All_vars_Corr.pdf",
             bbox_inches = "tight",
             dpi = 300)

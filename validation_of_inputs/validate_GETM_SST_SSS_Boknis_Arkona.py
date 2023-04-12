@@ -74,22 +74,6 @@ df = df.rename(columns={"LONGITUDE": "Longitude",
 df["station"] = c_ark
 df["alpha"] = al
 df["markersize"] = ms
-
-# #%% open and prepare Darss Sill in-situ data for SSS
-# df_ds = pd.read_excel("N:/data/in-situ/darss_sill/odin2_2023-02-08_095537_cleaned.xlsx")
-# df_ds = (df_ds.set_index("Time", drop = True)
-#          .resample('D')
-#          .mean(numeric_only = True)
-#          .reset_index()
-#          .dropna())
-# df_ds = df_ds[["Time", "PSAL5DSD", "TEMP5STD"]].rename({"TEMP5STD": "temp",
-#                                                         "PSAL5DSD": "sal"}, 
-#                                                        axis = 1)
-# df_ds["Longitude"] = 12.705
-# df_ds["Latitude"] = 54.6967
-# df_ds["station"] = "tab:red"
-# df_ds["alpha"] = al
-# df_ds["markersize"] = ms
  
 #%%  run match-up pipeline for SSS
 
@@ -192,7 +176,6 @@ sst = match_up(gdf = jgdf,
                station = "station",
                alpha = "alpha",
                markersize = "markersize",
-               # xds_var = xds_var,
                max_dist = 200,
                verbose = 1)
 
@@ -201,7 +184,6 @@ sstdf.to_csv("N:/data/in-situ/sst_matchup.csv")
 
 
 #%% plot results
-# import seaborn as sns
 
 fig, [ax1, ax2] = plt.subplots(1,2, figsize = (8,4))
 
@@ -209,24 +191,12 @@ sst.plot(ax = ax1,
          key = "temp",
          plot_stats = True)
 
-# sns.kdeplot(ax = ax1,
-#             data = sstdf, x="observed", y="modelled",
-#             levels = [0.25, 0.5, 0.75],
-#             color = "k",
-#             linewidths = 0.5)
-
 ax1.set_title("SST [°C]")
 
 sss.plot(ax = ax2,
          key = "salt",
          ylabel = "",
          plot_stats = True)
-
-# sns.kdeplot(ax = ax2,
-#             data = sssdf, x="observed", y="modelled",
-#             levels = [0.25, 0.5, 0.75],
-#             color = "k",
-#             linewidths = 0.5)
 
 ax2.set_title("SSS [PSU]")
 

@@ -47,7 +47,7 @@ g.set(ylabel = "$\overline{SST}_{0-11} \ $[°C]",
       xlabel = "$\overline{SSS}_{0-6} \ $ [PSU]")
 
 h,l = g.get_legend_handles_labels()
-lalt = ['Quantity', '0.1','1','10','100','10000','100000']
+lalt = ['Quantity', '0.1','1','10','100','10,000','100,000']
 h1,l1 = g.get_legend_handles_labels()
 
 
