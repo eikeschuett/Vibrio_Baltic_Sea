@@ -1,8 +1,5 @@
  [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-# Temporarily private repository
-This repository remains private, until the paper has been accepted. The visibility will then be changes to public. At the moment, access is only possible through this [link](https://gitfront.io/r/EikeSchuett/eafkTF8UcrX2/Vibrio-Baltic-Sea/).
-
 # First steps towards a near real-time modelling system of Vibrio vulnificus in the Baltic Sea
 This repository contains the code for the manuscript "First steps towards a near real-time modelling system of Vibrio vulnificus in the Baltic Sea", submitted to the International Journal of Environmental Research and Public Health. In this research, we compiled a dataset with more than 600 samples of Vibrio vulnificus and then use data or models and reanalysis to derive the environmental network between several hydrodynamic, meteorological and biogeochemical parameters and V. vulnificus in the south-western Baltic Sea. We also analyse changes of the season length between 1995 and 2021.
 
